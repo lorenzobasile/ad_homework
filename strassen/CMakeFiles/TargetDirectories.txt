@@ -1,0 +1,3 @@
+/home/lorenzo/Desktop/ad_homework/strassen/CMakeFiles/rebuild_cache.dir
+/home/lorenzo/Desktop/ad_homework/strassen/CMakeFiles/strassen_test.dir
+/home/lorenzo/Desktop/ad_homework/strassen/CMakeFiles/edit_cache.dir
