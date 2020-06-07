@@ -6,7 +6,7 @@
 
 
 int main(int argc, char *argv[]) {
-  size_t n = 1 << 12;
+  size_t n = (1 << 11) +1;
 
 
   float **A = allocate_random_matrix(n, n);

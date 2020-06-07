@@ -2,7 +2,7 @@
 #define __QUICK_SORT__
 
 #include <stdlib.h>
-
+#include "swap.h"
 #include "total_order.h"
 
 /**********************************************************************

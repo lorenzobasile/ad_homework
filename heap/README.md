@@ -57,7 +57,7 @@ make install
 
 4. In a heap represented with an array, all the nodes of the last two levels following the father of the last node are leaves. So, if there are $n$ nodes, since the index of the father of the last node has index $\lfloor \frac{n}{2} \rfloor$, the leaves have indexes between $\lfloor \frac{n}{2} \rfloor+1$ and $n$.
 
-5. The worst-case running time of `HEAPIFY` is $\Omega(log_2n)$. In fact, if the maximum element is on the root, n is a power of 2 and the leftmost path contains the largest elements, `HEAPIFY` has to be performed $h=log_2n $ times before the restoration of heap property.
+5. The worst-case running time of `HEAPIFY` is $\Omega(log_2n)$. In fact, if the maximum element is on the root, $n$ is a power of 2 and the leftmost path contains the largest elements, `HEAPIFY` has to be performed $h=log_2n $ times before the restoration of heap property.
 
 6. From exercise 4 we know that there are $n-\lfloor\frac{n}{2}\rfloor=\lceil\frac{n}{2}\rceil$ leaves (which have height 0), hence the proposition is true for $h=0$. Now let's assume that the proposition holds for $h=i-1$. If the $\lceil\frac{n}{2}\rceil$ leaves are removed, a new heap with $\lfloor\frac{n}{2}\rfloor$ nodes is created and the nodes previously at height $i$ are now at height $i-1$, then their number is at most $\lceil\frac{\lfloor\frac{n}{2}\rfloor}{2^{i}}\rceil<\lceil\frac{\frac{n}{2}}{2^{i}}\rceil=\lceil\frac{n}{2^{i+1}}\rceil$ .
 

@@ -220,7 +220,7 @@ void strassen_aux(float **C, float const *const *const A,
                  0, 0,
                  0, 0,
                  nra2r, nca2r, ncb2r);
-
+    deallocate_matrix(temp,nra2r);
     // S5 = A11 + A22
     sum_matrix_blocks(SA[2], (const float* const *const) SA[2], A,
                       0, 0,
@@ -549,7 +549,7 @@ void strassen_imp(float **C, float const *const *const A,
                  0, 0,
                  0, 0,
                  nra2r, nca2r, ncb2r);
-
+    deallocate_matrix(temp,nra2r);
     // C21=P3+P4
     sum_matrix_blocks(C, (const float* const *const) C, (const float* const *const) P,
                       C_f_row+nra2r, C_f_col,

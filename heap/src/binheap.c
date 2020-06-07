@@ -41,8 +41,32 @@ void swap_keys(binheap_type *H, unsigned int n_a, unsigned int n_b)
     free(tmp);
 }
 
+// heapify with recursion
+void heapify_rec(binheap_type *H,unsigned int node)
+{
+    unsigned int dst_node=node, child;
+    
+        node=dst_node;
+        
+        // find the minimum among node and its children
+        child=RIGHT_CHILD(node);
+        
+        if(VALID_NODE(H,child) && H->leq(ADDR(H,child), ADDR(H,dst_node))) dst_node=child;
+        
+        child=LEFT_CHILD(node);
+        
+        if(VALID_NODE(H,child) && H->leq(ADDR(H,child), ADDR(H,dst_node))) dst_node=child;
+        
+        // if the minimum is not in node, swap the keys
+    if(dst_node!=node) {
+        swap_keys(H,dst_node,node);
+        heapify_rec(H,dst_node);
+        
+    }
+        
+}
 
-void heapify(binheap_type *H,unsigned int node)
+void heapify_it(binheap_type *H,unsigned int node)
 {
     unsigned int dst_node=node, child;
     
@@ -76,7 +100,7 @@ const void *extract_min(binheap_type *H)
     // deleting the right most leaf of the last level (A[num_of_elem-1])
     H->num_of_elem--;
     
-    heapify(H,0);
+    heapify_rec(H,0);
     return ADDR(H,H->num_of_elem);
 }
 
@@ -116,9 +140,9 @@ binheap_type *build_heap(void *A,const unsigned int num_of_elem,const unsigned i
     memcpy(H->max_order_value, value, key_size);
     
     // fix the heap property from the second last level up to the root
-    for(unsigned int i=num_of_elem/2;i>0;i--) heapify(H,i);
+    for(unsigned int i=num_of_elem/2;i>0;i--) heapify_rec(H,i);
     
-    heapify(H,0);
+    heapify_rec(H,0);
     
     return H;
 }

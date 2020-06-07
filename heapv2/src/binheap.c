@@ -34,6 +34,10 @@ void swap_keys(binheap_type *H, unsigned int n_a, unsigned int n_b)
     unsigned int temp=H->key_pos[n_a];
     H->key_pos[n_a]=H->key_pos[n_b];
     H->key_pos[n_b]=temp;
+    
+    temp=H->rev_pos[H->key_pos[n_a]];
+    H->rev_pos[H->key_pos[n_a]]=H->rev_pos[H->key_pos[n_b]];
+    H->rev_pos[H->key_pos[n_b]]=temp;
 
 }
 
@@ -100,6 +104,7 @@ binheap_type *build_heap(void *A,const unsigned int num_of_elem,const unsigned i
     
     H->A=A;
     H->key_pos=malloc(sizeof(int)*max_size);
+    H->rev_pos=malloc(sizeof(int)*max_size);
     H->num_of_elem=num_of_elem;
     H->max_size=max_size;
     H->key_size=key_size;
@@ -109,6 +114,7 @@ binheap_type *build_heap(void *A,const unsigned int num_of_elem,const unsigned i
     if(num_of_elem==0) return H;
     for(unsigned int i=0; i<num_of_elem; i++){
         H->key_pos[i]=i;
+        H->rev_pos[i]=i;
     }
     // get the maximum among A[:num_of_elem-1] and store it in max_order_value
     const void *value=find_the_max(A,num_of_elem,key_size,leq);

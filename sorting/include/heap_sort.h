@@ -2,6 +2,7 @@
 #define __HEAP_SORT__
 
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "total_order.h"
 

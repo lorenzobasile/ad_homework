@@ -1,4 +1,6 @@
 #ifndef __TOTAL_ORDER__
+#define __TOTAL_ORDER__
+#include "swap.h"
 
 typedef int (*total_order)(const void *a, const void *b);
 

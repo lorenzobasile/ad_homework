@@ -13,6 +13,7 @@
 typedef struct {
     void *A; // this is the array used to store heap nodes
     unsigned int* key_pos;
+    unsigned int* rev_pos;
     unsigned int num_of_elem; // this is the number of nodes in the heap
     unsigned int max_size; // maximum number of nodes, i.e. size of A
     size_t  key_size; // size of the key type

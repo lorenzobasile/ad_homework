@@ -1,4 +1,12 @@
-# DSSC - Algorithmic Design - Strassen's Algorithm
+# Algorithmic Design homework 1: Strassen's Algorithm
+This repository contains my implementation of Strassen's algorithm for matrix multiplication, with some modifications to generalize it to deal with rectangular matrices. The final aim of this homework is to compare the time performances of Strassen algorithm against naive matrix multiplication algorithm when operating on rectangular matrices.
+
+The implementation of the naive algorithm is contained in the file `matrix.c`, while `strassen.c` contains the implementation of Strassen algorithm (in two different versions, one with optimized memory usage and one without these optimizations). These algorithms are compared in `main.c` by running them on randomly initialized matrices of increasing sizes. To obtain the executable `strassen_test`, it is sufficient to compile using the command `make`.
+
+
+
+
+
 This repository contains some code to simplify the implementation and the testing of the Strassen's algorithm for matrix multiplication.
 
 In order to test the differences in term of execution-time between the naive algorithm and the Strassen's algorithm, you need to implement both the algorithms. The former must be implementated by the function `naive_matrix_multiplication` in the file [matrix.c](matrix.c) and the latter by the function `strassen_matrix_multiplication` in the file [strassen.c](strassen.c).
