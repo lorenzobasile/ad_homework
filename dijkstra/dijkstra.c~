@@ -22,7 +22,8 @@ void update_distance(nodearray Q, int v, int new_val, size_t queue_size){
 }
 
 nodearray build_queue(graph G){
-    nodearray queue=G.V;
+    nodearray queue=malloc(sizeof(node)*G.size);
+    memcpy(queue, G.V, sizeof(node)*G.size);
     return queue;
 }
 
@@ -43,16 +44,20 @@ void dijkstra(graph G, int s){
     init_sssp(G);
     G.V[s].d=0;
     G.V[s].pred=0;
-    nodearray queue=build_queue(G);
+    nodearray queue=malloc(sizeof(node)*G.size);
+    memcpy(queue, G.V, sizeof(node)*G.size);
+    print_node(queue[4]);
+    print_node(G.V[4]);
     size_t queue_size=G.size;
     while(queue_size>0){
         int u=extract_min(queue, &queue_size);
         for(int i=0; i<queue_size; i++){
-            if(G.adj[queue[u].name][queue[i].name]>0){
-                relax(queue, u, i, G.adj[queue[u].name][queue[i].name], queue_size);
+            if(G.adj[queue[u].name][i]>0){
+                G.adj[queue[u].name][i];
+                relax(queue, u, i, G.adj[queue[u].name][i], queue_size);
             }
         }
-    }
+}
 }
 void swap(nodearray array, int i, int j){
     node temp;

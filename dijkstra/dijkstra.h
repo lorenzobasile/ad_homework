@@ -3,9 +3,11 @@
 #define _dijkstra
 #include <string.h>
 #include <stdlib.h>
+
 typedef struct{
     int d;
-    size_t pred;
+    int pred;
+    int name;
 }node;
 typedef node* nodearray;
 
@@ -16,10 +18,13 @@ typedef struct {
 }graph;
 
 void init_sssp(graph G);
-void relax(int* queue, int u, int v, int w, size_t queue_size);
-void dijkstra(graph G, node* s);
-void update_distance(int* Q, int v, int new_val, size_t queue_size);
+void relax(nodearray queue, int u, int v, int w, size_t queue_size);
+void dijkstra(graph G, int s);
+void update_distance(nodearray Q, int v, int new_val, size_t queue_size);
 nodearray build_queue(graph G);
-node extract_min(int* Q);
+int extract_min(nodearray Q, size_t* queue_size);
+int isempty(size_t queue_size);
+void swap(nodearray, int, int);
+void print_node(node n);
 
 #endif
