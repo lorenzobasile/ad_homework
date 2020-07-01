@@ -3,7 +3,6 @@
 
 #define MAX_VAL 2048
 
-
 void init_sssp(graph G){
     for(int i=0; i<G.size; i++){
         G.V[i].d=MAX_VAL;

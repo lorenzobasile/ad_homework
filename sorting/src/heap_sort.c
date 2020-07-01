@@ -7,8 +7,6 @@ void int_printer(const void *value)
   printf("%d", *((const int *)value));
 }
 
-
-
 void heap_sort(void *A, const unsigned int n, 
                const size_t elem_size, 
                total_order leq)

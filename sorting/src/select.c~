@@ -45,6 +45,6 @@ void quicksort_select_util(void *A, size_t left,size_t right,const size_t elem_s
 }
 
 void quick_sort_select(void *A, const unsigned int n, const size_t elem_size, total_order leq){
-   quicksort_select_util(A,0,n,elem_size,leq);
+   quicksort_u(A,0,n,elem_size,leq);
 }
 

@@ -8,10 +8,10 @@
 
 #define VALID_NODE(H,node) ((H)->num_of_elem>(node))
 
-
 #define ADDR(H,node) ((H)->A+H->key_pos[node]*(H)->key_size)
 
 #define INDEX_OF(H,addr) (((addr)-((H)->A))/(H)->key_size)
+
 
 
 int is_heap_empty(const binheap_type *H)
@@ -24,17 +24,19 @@ const void *min_value(const binheap_type *H)
 {
     if(is_heap_empty(H)) return NULL;
    
-    // the minimum is stored in the root aka A[0]
     return ADDR(H,0);
 }
 
 
 void swap_keys(binheap_type *H, unsigned int n_a, unsigned int n_b)
 {
+    //key_pos stores the position of the i-th key in the array A
+    //ex: key_pos[0] contains the position of the root in A
     unsigned int temp=H->key_pos[n_a];
     H->key_pos[n_a]=H->key_pos[n_b];
-    H->key_pos[n_b]=temp;
-    
+    H->key_pos[n_b]=temp; 
+    //rev_pos stores the position in the heap of the i-th element of array A
+    //ex: rev_pos[0] contains the position of the first element of A in the structure of the heap
     temp=H->rev_pos[H->key_pos[n_a]];
     H->rev_pos[H->key_pos[n_a]]=H->rev_pos[H->key_pos[n_b]];
     H->rev_pos[H->key_pos[n_b]]=temp;
@@ -42,26 +44,17 @@ void swap_keys(binheap_type *H, unsigned int n_a, unsigned int n_b)
 }
 
 
-void heapify(binheap_type *H,unsigned int node)
+void heapify(binheap_type *H,unsigned int node) //iterative version
 {
     unsigned int dst_node=node, child;
-    
     do
     {
         node=dst_node;
-        
-        // find the minimum among node and its children
         child=RIGHT_CHILD(node);
-        
         if(VALID_NODE(H,child) && H->leq(ADDR(H,child), ADDR(H,dst_node))) dst_node=child;
-        
         child=LEFT_CHILD(node);
-        
         if(VALID_NODE(H,child) && H->leq(ADDR(H,child), ADDR(H,dst_node))) dst_node=child;
-        
-        // if the minimum is not in node, swap the keys
         if(dst_node!=node) swap_keys(H,dst_node,node);
-        
     } while(dst_node != node);
 }
 
@@ -69,13 +62,8 @@ void heapify(binheap_type *H,unsigned int node)
 const void *extract_min(binheap_type *H)
 {
     if(is_heap_empty(H)) return NULL;
-    
-    // swapping the keys among the root and the right most leaf of the last level (A[num_of_elem-1])
     swap_keys(H,0, H->num_of_elem-1);
-    
-    // deleting the right most leaf of the last level (A[num_of_elem-1])
     H->num_of_elem--;
-    
     heapify(H,0);
     return ADDR(H,H->num_of_elem);
 }
@@ -87,10 +75,8 @@ const void *find_the_max(void *A,const unsigned int num_of_elem,const size_t key
     
     const void *max_value=A;
     
-    // for all the values in A
     for(const void *addr=A+key_size;addr!=A+num_of_elem*key_size;addr+=key_size)
     {
-        // if addr>max_value
         if(!leq(addr,max_value)) max_value=addr;
     }
     
@@ -110,21 +96,15 @@ binheap_type *build_heap(void *A,const unsigned int num_of_elem,const unsigned i
     H->key_size=key_size;
     H->leq=leq;
     H->max_order_value=malloc(key_size);
-    
     if(num_of_elem==0) return H;
-    for(unsigned int i=0; i<num_of_elem; i++){
+    for(unsigned int i=0; i<num_of_elem; i++){ //initializing both key_pos and rev_pos with i
         H->key_pos[i]=i;
         H->rev_pos[i]=i;
     }
-    // get the maximum among A[:num_of_elem-1] and store it in max_order_value
     const void *value=find_the_max(A,num_of_elem,key_size,leq);
     memcpy(H->max_order_value, value, key_size);
-    
-    // fix the heap property from the second last level up to the root
     for(unsigned int i=num_of_elem/2;i>0;i--) heapify(H,i);
-    
     heapify(H,0);
-    
     return H;
 }
 
@@ -133,51 +113,39 @@ void delete_heap(binheap_type *H)
 {
     free(H->max_order_value);
     free(H->key_pos);
+    free(H->rev_pos);
     free(H);
 }
-
 
 const void *decrease_key(binheap_type *H, void *node, const void *value)
 {
     unsigned int node_idx=INDEX_OF(H,node);
-    
-    // if node does not belong to H or *value>=*node return null
     if(!VALID_NODE(H,node_idx) || !(H->leq(value,node))) return NULL;
-    
-    memcpy(node, value, H->key_size);
-    unsigned int parent_idx= H->num_of_elem>1? PARENT(node_idx):0;
+    memcpy(node, value, H->key_size); //if key is smaller than the one in node, store it in node
+    int parent_idx=H->num_of_elem>1?PARENT(node_idx):0; 
+    //if the heap has only the root the index of the parent is 0
     void *parent=ADDR(H,parent_idx);
-    while(!H->leq(parent,node))
+    while((node_idx!=0) && !H->leq(parent,node)) //iterate until parent key is bigger than node key
     {
-        swap_keys(H,parent_idx,node_idx);
-        node_idx=parent_idx;
-        if(node_idx==0) break;
-        parent_idx=PARENT(node_idx);
-        parent=ADDR(H,parent_idx);
-
+        swap_keys(H,parent_idx,node_idx); //swap node and parent
+        node_idx=parent_idx; //set node index to parent index
+        parent_idx=node_idx?PARENT(node_idx):0; //if node_idx is 0 parent_idx is ill determined
+        parent=ADDR(H,parent_idx); //and segfault happens on this macro call
     }
     return node;
-    
 }
-
 
 const void *insert_value(binheap_type *H, const void *value)
 {
-    // if the heap is already full
-    if(H->max_size==H->num_of_elem) return NULL;
-    
-    // if the heap is empty or
+    if(H->max_size==H->num_of_elem) return NULL; //cannot insert, heap is full
     if(H->num_of_elem==0 || !H->leq(value,H->max_order_value)) memcpy(H->max_order_value,value,H->key_size);
-    
-    // get the position of the new node
-    H->key_pos[H->num_of_elem]=H->num_of_elem;
+    // update (if needed) max_order_value
+    H->key_pos[H->num_of_elem]=H->num_of_elem; //initializing key_pos for the new element
+    H->rev_pos[H->num_of_elem]=H->num_of_elem; //same for rev_pos
     void *new_node_addr=ADDR(H,H->num_of_elem);
-    memcpy(new_node_addr,H->max_order_value,H->key_size);
-    // increase the size of the heap
+    memcpy(new_node_addr,H->max_order_value,H->key_size); //putting max_order_value in the last node
     H->num_of_elem++;
-    
-    // decrease the key of the new node
-    return decrease_key(H,new_node_addr,value);
+    return decrease_key(H,new_node_addr,value); //decreasing key to the desired value
 }
 
 
@@ -185,7 +153,7 @@ void print_heap(const binheap_type *H,
                 void (*key_printer)(const void *value))
 {
 
-    unsigned int next_level_node=1; // stores the index of the left most node of the next level
+    unsigned int next_level_node=1;
     for(unsigned int node=0;node<H->num_of_elem;node++){
         if(node==next_level_node){
             printf("\n");

@@ -1,0 +1,1 @@
+/usr/bin/cc -O3 -DNDEBUG  -rdynamic CMakeFiles/dijkstra.dir/main.c.o CMakeFiles/dijkstra.dir/dijkstra.c.o  -o dijkstra 

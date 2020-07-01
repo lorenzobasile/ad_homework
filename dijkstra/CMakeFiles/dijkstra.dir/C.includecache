@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lorenzo/Desktop/ad_homework/dijkstra/dijkstra.c
+dijkstra.h
+/home/lorenzo/Desktop/ad_homework/dijkstra/dijkstra.h
+stdio.h
+-
+
+/home/lorenzo/Desktop/ad_homework/dijkstra/dijkstra.h
+string.h
+-
+stdlib.h
+-
+
+/home/lorenzo/Desktop/ad_homework/dijkstra/main.c
+dijkstra.h
+/home/lorenzo/Desktop/ad_homework/dijkstra/dijkstra.h
+stdio.h
+-
+
