@@ -17,10 +17,24 @@ string.h
 -
 stdlib.h
 -
+limits.h
+-
+binheap.h
+/home/lorenzo/Desktop/ad_homework/dijkstra/binheap.h
 
 /home/lorenzo/Desktop/ad_homework/dijkstra/main.c
 dijkstra.h
 /home/lorenzo/Desktop/ad_homework/dijkstra/dijkstra.h
+time.h
+-
 stdio.h
 -
+
+/home/lorenzo/Desktop/ad_homework/heapv2/include/binheap.h
+stdlib.h
+-
+total_orders.h
+-
+
+/home/lorenzo/Desktop/ad_homework/heapv2/include/total_orders.h
 

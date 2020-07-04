@@ -6,5 +6,5 @@ C_FLAGS = -O3 -DNDEBUG
 
 C_DEFINES = 
 
-C_INCLUDES = 
+C_INCLUDES = -isystem /home/lorenzo/Desktop/ad_homework/heapv2/include 
 
