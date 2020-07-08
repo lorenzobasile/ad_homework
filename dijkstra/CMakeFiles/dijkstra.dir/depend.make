@@ -3,10 +3,15 @@
 
 CMakeFiles/dijkstra.dir/dijkstra.c.o: dijkstra.c
 CMakeFiles/dijkstra.dir/dijkstra.c.o: dijkstra.h
+CMakeFiles/dijkstra.dir/dijkstra.c.o: graph.h
 CMakeFiles/dijkstra.dir/dijkstra.c.o: /home/lorenzo/Desktop/ad_homework/heapv2/include/binheap.h
 CMakeFiles/dijkstra.dir/dijkstra.c.o: /home/lorenzo/Desktop/ad_homework/heapv2/include/total_orders.h
 
+CMakeFiles/dijkstra.dir/graph.c.o: graph.c
+CMakeFiles/dijkstra.dir/graph.c.o: graph.h
+
 CMakeFiles/dijkstra.dir/main.c.o: dijkstra.h
+CMakeFiles/dijkstra.dir/main.c.o: graph.h
 CMakeFiles/dijkstra.dir/main.c.o: main.c
 CMakeFiles/dijkstra.dir/main.c.o: /home/lorenzo/Desktop/ad_homework/heapv2/include/binheap.h
 CMakeFiles/dijkstra.dir/main.c.o: /home/lorenzo/Desktop/ad_homework/heapv2/include/total_orders.h

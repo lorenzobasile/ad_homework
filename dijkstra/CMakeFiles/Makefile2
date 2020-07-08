@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /home/lorenzo/Desktop/ad_homework/dijkstra
 CMakeFiles/dijkstra.dir/all:
 	$(MAKE) -f CMakeFiles/dijkstra.dir/build.make CMakeFiles/dijkstra.dir/depend
 	$(MAKE) -f CMakeFiles/dijkstra.dir/build.make CMakeFiles/dijkstra.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lorenzo/Desktop/ad_homework/dijkstra/CMakeFiles --progress-num=1,2,3 "Built target dijkstra"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lorenzo/Desktop/ad_homework/dijkstra/CMakeFiles --progress-num=1,2,3,4 "Built target dijkstra"
 .PHONY : CMakeFiles/dijkstra.dir/all
 
 # Include target in all.
@@ -76,7 +76,7 @@ all: CMakeFiles/dijkstra.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/dijkstra.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lorenzo/Desktop/ad_homework/dijkstra/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lorenzo/Desktop/ad_homework/dijkstra/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/dijkstra.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lorenzo/Desktop/ad_homework/dijkstra/CMakeFiles 0
 .PHONY : CMakeFiles/dijkstra.dir/rule

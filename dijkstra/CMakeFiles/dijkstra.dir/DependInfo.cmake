@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/home/lorenzo/Desktop/ad_homework/dijkstra/dijkstra.c" "/home/lorenzo/Desktop/ad_homework/dijkstra/CMakeFiles/dijkstra.dir/dijkstra.c.o"
+  "/home/lorenzo/Desktop/ad_homework/dijkstra/graph.c" "/home/lorenzo/Desktop/ad_homework/dijkstra/CMakeFiles/dijkstra.dir/graph.c.o"
   "/home/lorenzo/Desktop/ad_homework/dijkstra/main.c" "/home/lorenzo/Desktop/ad_homework/dijkstra/CMakeFiles/dijkstra.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

@@ -9,6 +9,9 @@
 
 #define MAX_VAL INT_MAX
 
+
+
+
 //initialization function: taken an array of distances d and an array of predecessors p, sets all distances
 //to MAX_VAL and all predecessors to -1
 void init_sssp(int* d, int* p, size_t size);

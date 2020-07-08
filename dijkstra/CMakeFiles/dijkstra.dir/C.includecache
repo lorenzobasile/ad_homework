@@ -9,8 +9,6 @@
 /home/lorenzo/Desktop/ad_homework/dijkstra/dijkstra.c
 dijkstra.h
 /home/lorenzo/Desktop/ad_homework/dijkstra/dijkstra.h
-stdio.h
--
 
 /home/lorenzo/Desktop/ad_homework/dijkstra/dijkstra.h
 string.h
@@ -21,10 +19,22 @@ limits.h
 -
 binheap.h
 /home/lorenzo/Desktop/ad_homework/dijkstra/binheap.h
+graph.h
+/home/lorenzo/Desktop/ad_homework/dijkstra/graph.h
+
+/home/lorenzo/Desktop/ad_homework/dijkstra/graph.c
+graph.h
+/home/lorenzo/Desktop/ad_homework/dijkstra/graph.h
+
+/home/lorenzo/Desktop/ad_homework/dijkstra/graph.h
+stdlib.h
+-
 
 /home/lorenzo/Desktop/ad_homework/dijkstra/main.c
 dijkstra.h
 /home/lorenzo/Desktop/ad_homework/dijkstra/dijkstra.h
+graph.h
+/home/lorenzo/Desktop/ad_homework/dijkstra/graph.h
 time.h
 -
 stdio.h
