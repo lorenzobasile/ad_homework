@@ -5,7 +5,12 @@ set(CMAKE_BUILD_TYPE Release)
 
 set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 
-add_executable (dijkstra main.c dijkstra.c graph.c)
+FILE (GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.c"
+	               "${PROJECT_SOURCE_DIR}/include/*.h")
+
+include_directories("${PROJECT_SOURCE_DIR}/include")
+
+add_executable (dijkstra ${SOURCES})
 
 if(BINHEAP_PATH)
 	message("Linking binheap library")
@@ -18,3 +23,5 @@ if(BINHEAP_PATH)
 
 	target_link_libraries(dijkstra "binheap")
 endif(BINHEAP_PATH)
+
+
