@@ -13,8 +13,6 @@ typedef struct listnode{
 //pointer to the first element of the linked list
 typedef listnode* ll;
 
-
-//utility function that tells if a certain node is in a linked list
 int in(ll list, int index);
 
 //struct graph: contains a size and an array of linked lists of neighbours

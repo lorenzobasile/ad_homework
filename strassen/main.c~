@@ -6,7 +6,7 @@
 
 
 int main(int argc, char *argv[]) {
-  size_t n =(1<<11)+1;
+  size_t n = (1 << 11) +1;
 
 
   float **A = allocate_random_matrix(n, n);
@@ -15,10 +15,9 @@ int main(int argc, char *argv[]) {
   float **C1 = allocate_matrix(n, n);
   float **C2 = allocate_matrix(n, n);
 
-  //test of Strassen's algorithm and improved Strassen's algorithm against naive matrix multiplication
-  //on rectangular matrices
+  
   printf("Strassen's Alg.\tImproved Alg.\tNaive Alg.\tSame results\t sizes: NxM,MxP\n");
-  for (size_t j = 1<<4; j <= n; j *= 2) {
+  for (size_t j = 4; j <= n; j *= 2) {
     
     printf("%lf\t", test(strassen_matrix_multiplication, C2, A, B, j-1, j,j+1));
     fflush(stdout);
@@ -33,6 +32,8 @@ int main(int argc, char *argv[]) {
     fflush(stdout);  
     printf("%ldx%ld, %ldx%ld\n", j-1,j,j,j+1);
     fflush(stdout);
+
+    
   }
 
   deallocate_matrix(A, n);

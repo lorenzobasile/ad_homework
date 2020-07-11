@@ -1,5 +1,7 @@
 #include "quick_sort.h"
 
+//partition function: given a pivot, the array A is divided into two parts, one containing elements smaller
+//or equal to the pivot, the other containing elements greater than the pivot. the pivot position is returned
 int partition(void *A, size_t pivot, size_t left, size_t right,const size_t elem_size,total_order leq)
 {
 
@@ -17,11 +19,14 @@ int partition(void *A, size_t pivot, size_t left, size_t right,const size_t elem
             left++;
         }
     }
-        
+
     swap(A+(pivot*elem_size), A+(right*elem_size),elem_size);
     return right;
 }
 
+//improved partition: the original array is divided into three chunks, one containing elements lower than the
+//pivot, one containing elements equal to the pivot, one containing elements greater than the pivot.
+//the return value is a struct pair containing the indexes of the boundaries between these three chunks
 struct pair partition_ev(void *A, size_t pivot, size_t left, size_t right,const size_t elem_size,total_order leq)
 {
     struct pair boundaries;
@@ -45,23 +50,24 @@ struct pair partition_ev(void *A, size_t pivot, size_t left, size_t right,const 
                 left++;
             }
         }
-        else{
+        else{//if equal
             pivot=left;
             left++;
             rep_pivots++;
         }
     }
-        
+
     swap(A+(pivot*elem_size), A+(right*elem_size),elem_size);
     boundaries.r=right;
     boundaries.l=right-rep_pivots;
     return boundaries;
 }
 
+//utility function for quicksort
 void quicksort_util(void *A, size_t left,size_t right,const size_t elem_size,total_order leq)
 {
     while(left<right){
-        size_t pivot = partition(A,left,left,right-1,elem_size,leq);
+        int pivot = partition(A,left,left,right-1,elem_size,leq);
         quicksort_util(A,left,pivot,elem_size,leq);
         left=pivot+1;
     }

@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     unsigned int i;
     printf("Size\tInsertion Sort\t          \t        \n");
     printf("    \t(Random Case)\t(Best Case)\t(Worst Case)");
-    for (i=2; (1<<i)<=256; i++) {
+    for (i=2; (1<<i)<=MAX_SIZE_ALL; i++) {
         const unsigned int A_size=1<<i;
         printf("\n2^%d",i);
         test_and_print(insertion_sort, A,
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
 
     printf("Size\tQuick Sort\t           \tQuick Sort + Select\n");
     printf("    \t(Random Case)\t(Worst Case)\t(Random Case)\t(Worst Case)");
-    for (i=2; (1<<i)<=MAX_SIZE_ALL; i++) {
+    for (i=2; (1<<i)<=MAX_SIZE_NLOGN; i++) {
         const unsigned int A_size=1<<i;
         printf("\n2^%d",i);
 

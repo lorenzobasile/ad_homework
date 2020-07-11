@@ -1,24 +1,25 @@
 #include "dijkstra.h"
 
-
+//initialization function: taken an array of distances d and an array of predecessors p, sets all distances
+//to MAX_VAL and all predecessors to -1
 void init_sssp(int* d, int* p, size_t size){
     for(int i=0; i<size; i++){
         d[i]=MAX_VAL;
         p[i]=-1;
     }
 }
-void relax(int* d, int* p, int u, int v, int w){
+
+//function that is verifies if the distance of a node is to be updated when one of its neighbours is extracted
+//from the queue and, if this is the case, updates distance and sets as predecessor the newly extracted node
+void relax_array(int* d, int* p, int u, int v, int w){
     if(d[u]+w<d[v]){
-        update_distance(d,v,d[u]+w);
+        d[v]=d[u]+w;
         p[v]=u;
     }
 }
 
-void update_distance(int* d, int v, int new_val){
-    d[v]=new_val;
-}
-
-int extractmin(int* Q, int* d, size_t* queue_size){
+//function used to extract the node with minimal distance from an array of node indexes
+void extractmin(int* Q, int* d, size_t* queue_size){
     int argmin;
     int min=MAX_VAL;
     for(int i=0; i<*queue_size; i++){
@@ -29,10 +30,10 @@ int extractmin(int* Q, int* d, size_t* queue_size){
     }
     swap(Q,argmin,*queue_size-1);
     (*queue_size)--;
-    return *queue_size;
 }
 
-void dijkstra(graph G, int* distances, int* pred, int s){
+//array based implementation of Dijkstra's algorithm
+void dijkstra_array(graph G, int* distances, int* pred, int s){
     size_t num_nodes=G.size;
     init_sssp(distances, pred, num_nodes);
     distances[s]=0;
@@ -42,17 +43,19 @@ void dijkstra(graph G, int* distances, int* pred, int s){
     size_t queue_size=num_nodes;
     double total=0;
     while(queue_size>0){
-        int u=extractmin(queue, distances, &queue_size);
-        if(distances[queue[u]]==MAX_VAL) break;
-        ll neighbour=G.adj[queue[u]];
+        extractmin(queue, distances, &queue_size);
+        if(distances[queue[queue_size]]==MAX_VAL) break;
+        ll neighbour=G.adj[queue[queue_size]];
         while(neighbour!=NULL){
             int j=neighbour->node;
-            relax(distances, pred, queue[u], j, neighbour->cost);
+            relax_array(distances, pred, queue[queue_size], j, neighbour->cost);
             neighbour=neighbour->next;
     }
     }
     free(queue);
 }
+
+//basic function to swap two indexes in an array of integers
 void swap(int* array, int i, int j){
     int temp;
     temp=array[i];
@@ -60,6 +63,7 @@ void swap(int* array, int i, int j){
     array[j]=temp;
 }
 
+//heap based version of relax. now the update of the distance is performed by decrease_key
 void relax_heap(binheap_type* h, int* d, int* p, int u, int v, int w){
     if(d[u]+w<d[v]){
         int newval=d[u];
@@ -69,6 +73,7 @@ void relax_heap(binheap_type* h, int* d, int* p, int u, int v, int w){
     }
 }
 
+//heap based implementation of Dijkstra's algorithm
 void dijkstra_heap(graph G, int* distances, int* pred, int s){
     size_t num_nodes=G.size;
     init_sssp(distances, pred, num_nodes);

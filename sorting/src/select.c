@@ -1,7 +1,8 @@
 #include "select.h"
 #include "swap.h"
+
 unsigned int select_pivot(void* A, const unsigned int n, const size_t elem_size, total_order leq);
-unsigned int select_index(void *A, const unsigned int n, const unsigned int i, const size_t elem_size, total_order leq){
+unsigned int select_index(void* A, const unsigned int n, const unsigned int i, const size_t elem_size, total_order leq){
 
     if(n<=10){
         quick_sort(A,n,elem_size,leq);
