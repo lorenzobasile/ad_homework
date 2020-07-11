@@ -1,3 +1,0 @@
-/home/lorenzo/Desktop/ad_homework/dijkstra/CMakeFiles/rebuild_cache.dir
-/home/lorenzo/Desktop/ad_homework/dijkstra/CMakeFiles/dijkstra.dir
-/home/lorenzo/Desktop/ad_homework/dijkstra/CMakeFiles/edit_cache.dir

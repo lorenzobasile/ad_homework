@@ -24,7 +24,6 @@ int same_matrix(float const *const *const A, float const *const *const B,
   for (size_t i = 0; i < rows; i++) {
     for (size_t j = 0; j < cols; j++) {
       if (A[i][j] != B[i][j]) {
-        printf("elements %f and %f were found to be different", A[i][j],B[i][j]);
         return 0;
       }
     }

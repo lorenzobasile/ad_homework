@@ -48,8 +48,8 @@ int main(){
             free(distances_heap);
             free(pred_heap);
         }
-        printf("%e\n", elapsed_a/REP);
-        printf("%e\n", elapsed_h/REP);
+        printf("Array based, size=%d, time=%e\n",i,elapsed_a/REP);
+        printf("Heap based, size=%d, time=%e\n",i,elapsed_h/REP);
     }
 
     return 0;

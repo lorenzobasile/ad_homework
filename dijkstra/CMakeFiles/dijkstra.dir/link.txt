@@ -1,1 +1,0 @@
-/usr/bin/cc -O3 -DNDEBUG  -rdynamic CMakeFiles/dijkstra.dir/main.c.o CMakeFiles/dijkstra.dir/dijkstra.c.o CMakeFiles/dijkstra.dir/graph.c.o  -o dijkstra -Wl,-rpath,/home/lorenzo/Desktop/ad_homework/heapv2 /home/lorenzo/Desktop/ad_homework/heapv2/libbinheap.so 
