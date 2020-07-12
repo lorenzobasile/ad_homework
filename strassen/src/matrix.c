@@ -36,6 +36,7 @@ float **allocate_matrix(const size_t rows, const size_t cols) {
   float **M = (float **)malloc(sizeof(float *) * rows);
 
   for (size_t i = 0; i < rows; i++) {
+    //calloc to have initialization to 0
     M[i] = (float *)calloc(cols,sizeof(float));
   }
 
