@@ -9,7 +9,7 @@ void init_sssp(int* d, int* p, size_t size){
     }
 }
 
-//function that is verifies if the distance of a node is to be updated when one of its neighbours is extracted
+//function that verifies if the distance of a node is to be updated when one of its neighbours is extracted
 //from the queue and, if this is the case, updates distance and sets as predecessor the newly extracted node
 void relax_array(int* d, int* p, int u, int v, int w){
     if(d[u]+w<d[v]){
