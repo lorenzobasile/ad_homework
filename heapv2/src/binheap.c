@@ -19,7 +19,7 @@ int is_heap_empty(const binheap_type *H)
 const void *min_value(const binheap_type *H)
 {
     if(is_heap_empty(H)) return NULL;
-   return ADDR(H,0);
+    return ADDR(H,0);
 }
 
 
@@ -51,7 +51,7 @@ void heapify(binheap_type *H,unsigned int node)
         child=LEFT_CHILD(node);
         if(VALID_NODE(H,child) && H->leq(ADDR(H,child), ADDR(H,dst_node))) dst_node=child;
         if(dst_node!=node) swap_keys(H,dst_node,node);
-    } while(dst_node != node);
+    }while(dst_node != node);
 }
 
 

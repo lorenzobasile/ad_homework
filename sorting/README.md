@@ -11,6 +11,6 @@ To correctly compile the code present in this folder, it is useful to produce a 
 cmake -G "Unix Makefiles" -DBINHEAP_PATH=<BINHEAP_INSTALL_DIR> CMakeLists.txt
 ```
 
-Where `<BINHEAP_INSTALL_DIR>` is the directory in which the binary heap library of homework 2 is present.
+Where `<BINHEAP_INSTALL_DIR>` is the directory in which the binary heap library of homework 2 is present (folder `heap` of this repository).
 
 After this, executing `make` will produce an executable `test_sorting` in which all sorting algorithms are tested on randomly initialized arrays of different sizes and whose time results are shown in the report files.
